@@ -1,9 +1,3 @@
-# weatherrr-monitorrrr
-Please download the arduino ide and select the the required board as arduino uno and select the required port.
+#Weather-Monitoring-System
 
-
-
-
-We've only added the temperature sensor , raindrop sennsor , air quality sensor and ldr sensor!!
-
-Gotta add the lcd display as soon as we get the I2C module
+Weather monitoring station or weather monitoring system using Arduino is the simplest arduino project which can help us to monitoring the temperature and humidity by using one sensor. there we are using the DHT11 sensor which is easily capable to measure the temperature and humidity , MQT2 sensor for measuring the air quaility , LDR sensor for luminance detection.
