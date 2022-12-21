@@ -1,8 +1,0 @@
-Add the dht library by adafruit
-        or
-Just download the zip of DHT_sensor_library-1.4.4 and add it to the .zip libraries!!
-And also adafruit lsm303dlhc , adafuit tsl2561 , adafruit unified sensor .
-
-
-*warning*
-If those three are added then the dht library shan't work!!
