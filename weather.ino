@@ -1,12 +1,19 @@
-
 #include <DHT.h>
+//analogpins
 #define DHT11_PIN A4
 #define DHTTYPE DHT11
 #define mq2_pin A1
 #define LDR A3
 #define rain A2
+
+//digitalpins
 int buzzer = 9;
+
+
 void ReadDHT();
+void  Readrain();
+void  ReadAir();
+void  Readlight();
 
 DHT dht(DHT11_PIN, DHTTYPE);
 
@@ -20,16 +27,16 @@ void setup()
   pinMode(LDR, INPUT);
   pinMode(rain, INPUT);
   pinMode(buzzer, OUTPUT);
-  delay(10);
+  //tone(buzzer,361);
 }
 
 void loop()
 {
   ReadDHT();
-  Readrain();
   ReadAir();
   Readlight();
-  
+  Readrain();
+  delay(5000);
 }
 
 void  ReadDHT(void)
@@ -40,9 +47,9 @@ void  ReadDHT(void)
   if (isnan(h)|| isnan(t))
   {
     Serial.print("failed to read data from temp sensor");
-    Serial.print("************************************");
+    Serial.println("************************************");
   }
-if(t>45){
+else if (t>45){
     for(i=0;i<=100;i++ )
       {      
         digitalWrite(buzzer,HIGH);
@@ -50,14 +57,20 @@ if(t>45){
         digitalWrite(buzzer,LOW);
         delay(500);        
       }
+      Serial.print(h);
+      Serial.print("%");
+      Serial.println(t);
+      Serial.print("C");
+      Serial.println("************************************");
 }  
-  Serial.print(h);
-  Serial.print("%");
-  Serial.print(t);
-  Serial.print("C");
-  
-  
-  delay(2000);
+else if (t<=45){
+      Serial.print(h);
+      Serial.print("%");
+      Serial.println(t);
+      Serial.print("C");
+      Serial.println("************************************");      
+} 
+  delay(200);
 }
 
 
@@ -83,8 +96,8 @@ void ReadAir(void)
         delay(500);        
       }    
   }
-  Serial.print("************************************");
-  delay(2000);
+  Serial.println("************************************");
+  delay(200);
 }
 
 void Readrain()
@@ -105,7 +118,7 @@ void Readrain()
  {
    Serial.print("no rain currently!!");
  }
- delay(1);
+ delay(200);
 }
 
 
@@ -117,5 +130,5 @@ void Readlight(void)
   Serial.print(analogRead(LDR));
   Serial.print("%");
   Serial.print("************************************");
-  delay(2000);
+  delay(200);
 }
